@@ -24,20 +24,20 @@ public class ControllerExceptionHandler {
   @ExceptionHandler(ResourceNotFoundException.class)
   ResponseEntity<ErrorMessage> resourceNotFoundExceptionHandler(Exception ex, WebRequest request) {
     ErrorMessage errorMessage = new ErrorMessage(
-        HttpStatus.NOT_ACCEPTABLE.value(),
+        HttpStatus.INTERNAL_SERVER_ERROR.value(),
         new Date(),
         "Resource Not Found Exception caught: " + ex.getMessage(),
         "The description of the request: " + request.getDescription(true));
-    return new ResponseEntity<>(errorMessage, HttpStatus.NOT_ACCEPTABLE);
+    return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
   @ExceptionHandler(ResourceExistsAlreadyException.class)
   ResponseEntity<ErrorMessage> resourceAlreadyExistsExceptionHandler(Exception ex, WebRequest request) {
     ErrorMessage errorMessage = new ErrorMessage(
-        HttpStatus.NOT_ACCEPTABLE.value(),
+        HttpStatus.INTERNAL_SERVER_ERROR.value(),
         new Date(),
         "Resource Already Exists Exception caught: " + ex.getMessage(),
         "The description of the request: " + request.getDescription(true));
-    return new ResponseEntity<>(errorMessage, HttpStatus.NOT_ACCEPTABLE);
+    return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 }
