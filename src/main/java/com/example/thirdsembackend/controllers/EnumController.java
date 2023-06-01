@@ -30,12 +30,12 @@ public class EnumController {
   }
 
   @GetMapping("/type/description/{boatType}")
-  public String getDescriptionOfBoatType(@PathVariable String boatType) {
+  public String getBoatTypeDescription(@PathVariable String boatType) {
     return service.getBoatTypeDescription(boatType);
   }
 
   @GetMapping("/state/description/{finishState}")
-  public String getDescriptionOfFinishState(@PathVariable String finishState) {
+  public String getFinishStateDescription(@PathVariable String finishState) {
     return service.getFinishStateDescription(finishState);
   }
 }

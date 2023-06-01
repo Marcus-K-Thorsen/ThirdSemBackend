@@ -17,7 +17,7 @@ public class ContestantController {
 
 
   @GetMapping("/contestants")
-  public List<Contestant> getContestant() {
+  public List<Contestant> getContestants() {
     return service.getAllContestants();
   }
 
