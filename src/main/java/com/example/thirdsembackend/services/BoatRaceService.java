@@ -117,4 +117,21 @@ public class BoatRaceService {
     repository.deleteById(id);
     return new ResponseEntity<>(deletedBoatRace, HttpStatus.OK);
   }
+
+  public List<BoatRace> createBoatRaces() {
+    if (getAllBoatRaces().size() == 0) {
+      LocalDate dateOfRace = LocalDate.of(2023, 5, 3);
+      List<BoatType> boatTypes = BoatType.getAllBoatTypes();
+      int amountOfWednesdays = 22;
+      for (int i = 1; i <= amountOfWednesdays; i++) {
+        for (BoatType boatType : boatTypes) {
+          String boatRaceName = boatType + " nr. " + i;
+          BoatRace race = new BoatRace(dateOfRace, boatRaceName, boatType);
+          addBoatRace(race);
+        }
+        dateOfRace = dateOfRace.plusDays(7);
+      }
+    }
+    return getAllBoatRaces();
+  }
 }

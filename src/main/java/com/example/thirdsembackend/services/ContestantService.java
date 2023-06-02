@@ -25,6 +25,16 @@ public class ContestantService {
     return repository.findAll();
   }
 
+  public List<Contestant> getAllContestantsByRaceId(Long raceId) {
+    boolean theBoatRaceDoesntExist = repository.isTheBoatRaceNotInTheDatabase(raceId);
+    if (theBoatRaceDoesntExist) {
+      throw new ResourceNotFoundException("The requested Contestants, within the BoatRace with the ID: '" + raceId + "', could not be found as that BoatRace isn't within the Database.");
+    }
+
+    List<Contestant> contestantsInRace = repository.findContestantsByBoatRaceId(raceId);
+    return contestantsInRace;
+  }
+
   public Contestant getContestant(Long id) {
     return repository.findById(id).orElseThrow(
         () -> new ResourceNotFoundException("No Contestant with the ID: '" + id + "' within the Database, so is unable to get the Contestant."));
@@ -80,8 +90,8 @@ public class ContestantService {
       }
       contestant.setState(FinishState.FINISHED);
     } else {
-      if (contestant.getState() == null) {
-        throw new ResourceNotFoundException("The Contestant has not Finished the BoatRace, and the FinishState is null, and therefore can the Contestant not be added to the Database.");
+      if (contestant.getState() == null || contestant.getState() == FinishState.FINISHED) {
+        throw new ResourceNotFoundException("The Contestant has not Finished the BoatRace as their position is '0', and the FinishState is either null or set to be Finished, and therefore can the Contestant not be added to the Database as long it does not have a proper FinishState.");
       }
     }
 
@@ -101,4 +111,6 @@ public class ContestantService {
     repository.deleteById(id);
     return new ResponseEntity<>(deletedContestant, HttpStatus.OK);
   }
+
+
 }

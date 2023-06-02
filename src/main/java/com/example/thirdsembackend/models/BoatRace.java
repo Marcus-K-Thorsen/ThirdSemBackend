@@ -32,8 +32,7 @@ public class BoatRace {
   private Set<Contestant> competitors = new HashSet<>();
 
 
-  public BoatRace(Long id, LocalDate date, String name, BoatType type) {
-    this.id = id;
+  public BoatRace(LocalDate date, String name, BoatType type) {
     this.date = date;
     this.name = name;
     this.type = type;

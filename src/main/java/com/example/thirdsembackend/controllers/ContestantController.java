@@ -21,6 +21,11 @@ public class ContestantController {
     return service.getAllContestants();
   }
 
+  @GetMapping("/contestants/boatRaceId/{raceId}")
+  public List<Contestant> getContestantsByBoatRaceId(@PathVariable Long raceId) {
+    return service.getAllContestantsByRaceId(raceId);
+  }
+
   @GetMapping("/contestant/{id}")
   public Contestant getContestant(@PathVariable Long id) {
     return service.getContestant(id);

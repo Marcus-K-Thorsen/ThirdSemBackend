@@ -28,13 +28,18 @@ public class Sailboat {
   @JsonBackReference
   private Set<Contestant> competitions = new HashSet<>();
 
-  public Sailboat(Long id, String name, BoatType type) {
-    this.id = id;
+  public Sailboat(String name, BoatType type) {
     this.name = name;
     this.type = type;
   }
 
+
   public Sailboat() {
+  }
+
+
+  public int getAmountOfCompetitions() {
+    return competitions.size();
   }
 
 

@@ -15,6 +15,11 @@ public class BoatRaceController {
   @Autowired
   BoatRaceService service;
 
+  @GetMapping("/create")
+  public List<BoatRace> createBoatRaces() {
+    return service.createBoatRaces();
+  }
+
   @GetMapping("/boatraces")
   public List<BoatRace> getBoatRaces() {
     return service.getAllBoatRaces();

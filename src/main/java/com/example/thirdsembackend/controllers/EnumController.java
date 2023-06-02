@@ -1,5 +1,6 @@
 package com.example.thirdsembackend.controllers;
 
+import com.example.thirdsembackend.config.EnumMessage;
 import com.example.thirdsembackend.models.BoatType;
 import com.example.thirdsembackend.models.FinishState;
 import com.example.thirdsembackend.services.EnumService;
@@ -30,12 +31,12 @@ public class EnumController {
   }
 
   @GetMapping("/type/description/{boatType}")
-  public String getBoatTypeDescription(@PathVariable String boatType) {
+  public EnumMessage getBoatTypeDescription(@PathVariable String boatType) {
     return service.getBoatTypeDescription(boatType);
   }
 
   @GetMapping("/state/description/{finishState}")
-  public String getFinishStateDescription(@PathVariable String finishState) {
+  public EnumMessage getFinishStateDescription(@PathVariable String finishState) {
     return service.getFinishStateDescription(finishState);
   }
 }
