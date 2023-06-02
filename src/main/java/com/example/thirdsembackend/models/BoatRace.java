@@ -31,6 +31,12 @@ public class BoatRace {
   @JsonBackReference
   private Set<Contestant> competitors = new HashSet<>();
 
+  public BoatRace(Long id, LocalDate date, String name, BoatType type) {
+    this.id = id;
+    this.date = date;
+    this.name = name;
+    this.type = type;
+  }
 
   public BoatRace(LocalDate date, String name, BoatType type) {
     this.date = date;
@@ -42,6 +48,10 @@ public class BoatRace {
   }
 
 
+
+  public void addCompetitors(Contestant contestant) {
+    competitors.add(contestant);
+  }
 
 
   public Long getId() {

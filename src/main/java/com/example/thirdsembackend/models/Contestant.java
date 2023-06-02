@@ -31,6 +31,13 @@ public class Contestant {
   private BoatRace boatRace;
 
 
+  public Contestant(Long id, int position, FinishState state, Sailboat sailboat, BoatRace boatRace) {
+    this.id = id;
+    this.position = position;
+    this.state = state;
+    this.sailboat = sailboat;
+    this.boatRace = boatRace;
+  }
 
   public Contestant() {
 
